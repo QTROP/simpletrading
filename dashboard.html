@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>SimpleTrading - Dashboard</title>
+<style>
+  body {
+    margin: 0; padding: 0;
+    font-family: Arial, sans-serif;
+    background: #f0f4f8;
+    display: flex;
+    min-height: 100vh;
+  }
+  /* Sidebar */
+  #sidebar {
+    background: #333;
+    color: white;
+    width: 220px;
+    padding-top: 40px;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    height: 100vh;
+  }
+  #sidebar a {
+    padding: 15px 20px;
+    color: white;
+    text-decoration: none;
+    border-bottom: 1px solid #444;
+    cursor: pointer;
+  }
+  #sidebar a:hover {
+    background: #444;
+  }
+  /* Content */
+  #content {
+    margin-left: 220px;
+    padding: 30px;
+    flex: 1;
+  }
+  h1 {
+    margin-top: 0;
+  }
+  button {
+    padding: 10px 20px;
+    margin-right: 15px;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  #balance {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+  }
+  .btn-deposit {
+    background-color: #4caf50;
+    color: white;
+  }
+  .btn-withdraw {
+    background-color: #f44336;
+    color: white;
+  }
+  footer {
+    text-align: center;
+    padding: 15px;
+    font-size: 0.9rem;
+    color: #555;
+    background: #eaeaea;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    margin-left: 220px;
+  }
+</style>
+</head>
+<body>
+
+  <div id="sidebar">
+    <a href="#" id="dashboardBtn">Dashboard</a>
+    <a href="#" id="depositBtn">Deposit</a>
+    <a href="#" id="withdrawBtn">Withdraw</a>
+    <a href="bots.html" id="botsBtn">Bots</a>
+    <a href="index.html" id="logoutBtn">Logout</a>
+  </div>
+
+  <div id="content">
+    <h1>Dashboard</h1>
+    <div id="balance">Balance: Ksh <span id="balanceAmount">0.00</span></div>
+    <button class="btn-deposit" id="depositOpen">Deposit</button>
+    <button class="btn-withdraw" id="withdrawOpen">Withdraw</button>
+  </div>
+
+  <footer>No Risks — 100% Guaranteed</footer>
+
+  <script>
+    // Simulated balance, you can replace with API calls
+    let balance = 0;
+
+    function updateBalance() {
+      const balEl = document.getElementById('balanceAmount');
+      balEl.textContent = balance.toFixed(2);
+    }
+
+    updateBalance();
+
+    document.getElementById('depositOpen').addEventListener('click', () => {
+      alert('Deposit page not yet implemented');
+    });
+
+    document.getElementById('withdrawOpen').addEventListener('click', () => {
+      alert('Withdraw page not yet implemented');
+    });
+
+    // Logout
+    document.getElementById('logoutBtn').addEventListener('click', () => {
+      localStorage.removeItem('simpleTradingUser');
+      window.location.href = 'index.html';
+    });
+  </script>
+
+</body>
+</html>

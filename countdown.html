@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Reward Countdown</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+  <style>
+    .countdown {
+      font-size: 2rem;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center">
+
+  <div class="bg-white shadow-lg rounded-xl p-6 w-full max-w-lg text-center">
+    <h1 class="text-2xl font-bold text-blue-600 mb-4">Reward Countdown</h1>
+    
+    <p class="text-gray-700 text-lg">You have purchased the <strong class="text-green-600">VIP</strong> Bot</p>
+    <p class="text-gray-600 mb-6">Reward: <strong>Ksh 2500</strong> in <strong>24 hours</strong></p>
+
+    <div class="countdown text-blue-800" id="timer">
+      24:00:00
+    </div>
+
+    <p class="mt-6 text-sm text-gray-500">Please come back after the countdown ends to claim your reward.</p>
+  </div>
+
+  <script>
+    // Set countdown (24 hours in seconds)
+    let seconds = 24 * 60 * 60;
+
+    function formatTime(s) {
+      const hrs = String(Math.floor(s / 3600)).padStart(2, '0');
+      const mins = String(Math.floor((s % 3600) / 60)).padStart(2, '0');
+      const secs = String(s % 60).padStart(2, '0');
+      return `${hrs}:${mins}:${secs}`;
+    }
+
+    function updateCountdown() {
+      const timerEl = document.getElementById('timer');
+      if (seconds > 0) {
+        seconds--;
+        timerEl.textContent = formatTime(seconds);
+      } else {
+        timerEl.textContent = "Reward Ready!";
+      }
+    }
+
+    setInterval(updateCountdown, 1000);
+  </script>
+
+</body>
+</html>
